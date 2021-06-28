@@ -19,5 +19,5 @@
    - ***copy-webpack-plugin***: Giúp bạn copy các file ở thư mục dev vào thư mục build. Ví dụ bạn có các file như favicon.ico, robots.txt cùng cấp với index.html, bạn muốn khi build xong thì các file này cũng có mặt ở bản build. Nếu không có plugin này thì bạn phải copy thủ công.
    - ***dotenv-webpack***: Giúp bạn dùng được các biến môi trường ở file ***.env*** và trong app của bạn
    - ***html-webpack-plugin***: Giúp clone ra 1 file index.html từ file html ban đầu. Tại sao lại cần clone thì bạn có thể tham khảo bài Webpack
-   - ***mini-css-extract-plugin***: Bình thường thì css sẽ nằm trong file js sau khi build. Và khi chạy app thì js sẽ thêm các đoạn css đó vào thẻ <code><style></style><code>. Bây giờ mình không muốn như vậy, mình muốn css phải nằm ở file riêng biệt với js và khi chạy app thì js sẽ tự import bằng thẻ <code><link><code>. Đó là chức năng của plugin này
+   - ***mini-css-extract-plugin***: Bình thường thì css sẽ nằm trong file js sau khi build. Và khi chạy app thì js sẽ thêm các đoạn css đó vào thẻ <code><style></style></code>. Bây giờ mình không muốn như vậy, mình muốn css phải nằm ở file riêng biệt với js và khi chạy app thì js sẽ tự import bằng thẻ <code><link></code>. Đó là chức năng của plugin này
    - ***webpack-bundle-analyzer***: Giúp bạn phân tích bản build, coi thử thư viện nào đang chiếm bao nhiêu % bản build,…
