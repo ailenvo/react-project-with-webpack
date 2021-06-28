@@ -27,100 +27,99 @@
 Ngoài prettier, eslint-config-prettier và eslint-plugin-prettier thì còn lại đều là các plugin tiêu chuẩn tương tự như bộ cài Create React App.
 
 ##### Thêm các file cấu hình
-
 .eslintrc
-    {
-        "extends": ["react-app", "prettier"],
-        "plugins": ["react", "prettier"],
-        "rules": {
-            "prettier/prettier": [
-            "warn",
-            {
-                "arrowParens": "avoid",
-                "semi": false,
-                "trailingComma": "none",
-                "endOfLine": "lf",
-                "tabWidth": 2,
-                "printWidth": 80,
-                "useTabs": false
+        {
+            "extends": ["react-app", "prettier"],
+            "plugins": ["react", "prettier"],
+            "rules": {
+                "prettier/prettier": [
+                "warn",
+                {
+                    "arrowParens": "avoid",
+                    "semi": false,
+                    "trailingComma": "none",
+                    "endOfLine": "lf",
+                    "tabWidth": 2,
+                    "printWidth": 80,
+                    "useTabs": false
+                }
+                ],
+                "no-console": "warn"
             }
-            ],
-            "no-console": "warn"
         }
-    }
 
 .eslintignore
-    /src/serviceWorker.ts
-    /src/setupTests.ts
+        /src/serviceWorker.ts
+        /src/setupTests.ts
 
 .prettierrc
-    {
-    "arrowParens": "avoid",
-    "semi": false,
-    "trailingComma": "none",
-    "endOfLine": "lf",
-    "tabWidth": 2,
-    "printWidth": 80,
-    "useTabs": false
-    }
+        {
+        "arrowParens": "avoid",
+        "semi": false,
+        "trailingComma": "none",
+        "endOfLine": "lf",
+        "tabWidth": 2,
+        "printWidth": 80,
+        "useTabs": false
+        }
 
 .prettierignore
-    .cache
-    package-lock.json
+        .cache
+        package-lock.json
 
 # Thêm script vào package.json
 Chèn đoạn mã dưới đây vào mục scripts trong file ***package.json***
-    "start": "webpack serve --mode development",
-    "build": "webpack --mode production",
-    "build:analyze": "webpack --mode production --env analyze",
-    "lint": "eslint --ext js,jsx,ts,tsx src/",
-    "lint:fix": "eslint --fix --ext js,jsx,ts,tsx src/",
-    "prettier": "prettier --check \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
-    "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
+        "start": "webpack serve --mode development",
+        "build": "webpack --mode production",
+        "build:analyze": "webpack --mode production --env analyze",
+        "lint": "eslint --ext js,jsx,ts,tsx src/",
+        "lint:fix": "eslint --fix --ext js,jsx,ts,tsx src/",
+        "prettier": "prettier --check \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
+        "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
 
 # Thêm file tsconfig.json để cấu hình Typescript
 tsconfig.json
-    {
-        "compilerOptions": {
-            "target": "ES5",
-            "allowJs": true,
-            "strict": true,
-            "module": "ESNext",
-            "moduleResolution": "node",
-            "noImplicitAny": false,
-            "sourceMap": true,
-            "jsx": "react",
-            "allowSyntheticDefaultImports": true,
-            "baseUrl": ".",
-            "paths": {
-            "@/*": ["src/*"],
-            "@@/*": ["./*"]
-            }
-        },
-        "include": ["src/**/*"]
-    }
+        {
+            "compilerOptions": {
+                "target": "ES5",
+                "allowJs": true,
+                "strict": true,
+                "module": "ESNext",
+                "moduleResolution": "node",
+                "noImplicitAny": false,
+                "sourceMap": true,
+                "jsx": "react",
+                "allowSyntheticDefaultImports": true,
+                "baseUrl": ".",
+                "paths": {
+                "@/*": ["src/*"],
+                "@@/*": ["./*"]
+                }
+            },
+            "include": ["src/**/*"]
+        }
 # Thêm public/index.html
 index.html
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" href="favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta
-        name="description"
-        content="Web site created using create-react-app"
-        />
-        <link rel="apple-touch-icon" href="logo192.png" />
-        <link rel="manifest" href="manifest.json" />
-        <title>React App</title>
-    </head>
-    <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
-        <div id="root"></div>
-    </body>
-    </html>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="utf-8" />
+                <link rel="icon" href="favicon.ico" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="theme-color" content="#000000" />
+                <meta
+                name="description"
+                content="Web site created using create-react-app"
+                />
+                <link rel="apple-touch-icon" href="logo192.png" />
+                <link rel="manifest" href="manifest.json" />
+                <title>React App</title>
+            </head>
+            <body>
+                <noscript>You need to enable JavaScript to run this app.</noscript>
+                <div id="root"></div>
+            </body>
+            </html>
 
 # Thêm file webpack.config.js
 webpack.config.js
@@ -298,17 +297,17 @@ webpack.config.js
   -  ***devServer.contentBase***: Chứa đường dẫn tương đối đến file index.html
   -  ***devServer.port***: port khi chạy localhost
   -  ***devServer.hot***: Chế độ hot reload. Mặc định thì ở dev server thì webpack sẽ refresh lại trang mỗi khi có thay đổi nhỏ trong code.
-  -  ***devServer.publicPath***: Chứa đường dẫn tương đối từ thư mục root trỏ đến thư mục build (ở đây là dist). Chú ý phải thêm ***/*** ở trước và sau. Nhưng vì dùng ***HtmlWebpackPlugin*** nên ta sẽ tính từ chính thư mục dist. Vì thế giá trị cần dùng là ***/***. Ở đây mình không dùng giá trị nào cả, vì mặc định nó đã là ***/***
+  -  ***devServer.publicPath***: Chứa đường dẫn tương đối từ thư mục root trỏ đến thư mục build (ở đây là dist). Chú ý phải thêm <code>/</code> ở trước và sau. Nhưng vì dùng ***HtmlWebpackPlugin*** nên ta sẽ tính từ chính thư mục dist. Vì thế giá trị cần dùng là <code>/</code>. Ở đây mình không dùng giá trị nào cả, vì mặc định nó đã là <code>/</code>
   -  ***devServer.watchContentBase***: Nếu bạn có thay đổi gì trong file index.html thì trình duyệt cũng tự động reload.
   -  ***devServer.historyApiFallback***: Phải set true nếu không khi bạn dùng lazyload module React thì sẽ gặp lỗi không load được file.
   -  ***plugins***: Chứa các plugin Webpack.
   -  ***performance.maxEntrypointSize***: Khi có 1 file build vượt quá giới hạn này (tính bằng byte) thì sẽ bị warning trên terminal.
 
 Để chạy khi dev
-    yarn start
+        yarn start
 Để build ra thành phẩm phục vụ deploy
-    yarn build
+        yarn build
 Để build và phân tích source code
-    yarn build:analyze
+        yarn build:analyze
 Ngoài ra bạn có thể yarn lint, yarn lint:fix, yarn prettier, yarn prettier:fix như đã định nghĩa trong file package.json
 
