@@ -28,292 +28,293 @@
 
 .eslintrc
 
-{
-  "extends": ["react-app", "prettier"],
-  "plugins": ["react", "prettier"],
-  "rules": {
-    "prettier/prettier": [
-      "warn",
-      {
-        "arrowParens": "avoid",
-        "semi": false,
-        "trailingComma": "none",
-        "endOfLine": "lf",
-        "tabWidth": 2,
-        "printWidth": 80,
-        "useTabs": false
-      }
-    ],
-    "no-console": "warn"
-  }
-}
+    {
+    "extends": ["react-app", "prettier"],
+    "plugins": ["react", "prettier"],
+    "rules": {
+        "prettier/prettier": [
+        "warn",
+        {
+            "arrowParens": "avoid",
+            "semi": false,
+            "trailingComma": "none",
+            "endOfLine": "lf",
+            "tabWidth": 2,
+            "printWidth": 80,
+            "useTabs": false
+        }
+        ],
+        "no-console": "warn"
+    }
+    }
 .eslintignore
-
 /src/serviceWorker.ts
 /src/setupTests.ts
 .prettierrc
-
-{
-  "arrowParens": "avoid",
-  "semi": false,
-  "trailingComma": "none",
-  "endOfLine": "lf",
-  "tabWidth": 2,
-  "printWidth": 80,
-  "useTabs": false
-}
+    {
+    "arrowParens": "avoid",
+    "semi": false,
+    "trailingComma": "none",
+    "endOfLine": "lf",
+    "tabWidth": 2,
+    "printWidth": 80,
+    "useTabs": false
+    }
 .prettierignore
 
-.cache
-package-lock.json
+    .cache
+    package-lock.json
 Thêm script vào package.json
 Chèn đoạn mã dưới đây vào mục scripts trong file package.json
 
-"start": "webpack serve --mode development",
-"build": "webpack --mode production",
-"build:analyze": "webpack --mode production --env analyze",
-"lint": "eslint --ext js,jsx,ts,tsx src/",
-"lint:fix": "eslint --fix --ext js,jsx,ts,tsx src/",
-"prettier": "prettier --check \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
-"prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "build:analyze": "webpack --mode production --env analyze",
+    "lint": "eslint --ext js,jsx,ts,tsx src/",
+    "lint:fix": "eslint --fix --ext js,jsx,ts,tsx src/",
+    "prettier": "prettier --check \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
+    "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
 Thêm file tsconfig.json để cấu hình Typescript
 tsconfig.json
 
-{
-  "compilerOptions": {
-    "target": "ES5",
-    "allowJs": true,
-    "strict": true,
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "noImplicitAny": false,
-    "sourceMap": true,
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@@/*": ["./*"]
+    {
+    "compilerOptions": {
+        "target": "ES5",
+        "allowJs": true,
+        "strict": true,
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "paths": {
+        "@/*": ["src/*"],
+        "@@/*": ["./*"]
+        }
+    },
+    "include": ["src/**/*"]
     }
-  },
-  "include": ["src/**/*"]
-}
 Đừng quên thêm public/index.html
 index.html
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="logo192.png" />
-    <link rel="manifest" href="manifest.json" />
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
-</html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta
+        name="description"
+        content="Web site created using create-react-app"
+        />
+        <link rel="apple-touch-icon" href="logo192.png" />
+        <link rel="manifest" href="manifest.json" />
+        <title>React App</title>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+    </body>
+    </html>
+
 Thêm file webpack.config.js
 webpack.config.js
 
-const path = require("path")
-const webpack = require("webpack")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const CopyPlugin = require("copy-webpack-plugin")
-const Dotenv = require("dotenv-webpack")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
-const CompressionPlugin = require("compression-webpack-plugin")
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin
-const fs = require("fs")
-const directoryPath = path.resolve("public")
-const handleDir = () => {
-  return new Promise((resolve, reject) => {
-    fs.readdir(directoryPath, (err, files) => {
-      if (err) {
-        reject("Unable to scan directory: " + err)
-      }
-      resolve(files)
+    const path = require("path")
+    const webpack = require("webpack")
+    const HtmlWebpackPlugin = require("html-webpack-plugin")
+    const CopyPlugin = require("copy-webpack-plugin")
+    const Dotenv = require("dotenv-webpack")
+    const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+    const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+    const CompressionPlugin = require("compression-webpack-plugin")
+    const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+    .BundleAnalyzerPlugin
+    const fs = require("fs")
+    const directoryPath = path.resolve("public")
+    const handleDir = () => {
+    return new Promise((resolve, reject) => {
+        fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            reject("Unable to scan directory: " + err)
+        }
+        resolve(files)
+        })
     })
-  })
-}
-module.exports = async (env, agrv) => {
-  const isDev = agrv.mode === "development"
-  const isAnalyze = env && env.analyze
-  const dirs = await handleDir()
-  const copyPluginPatterns = dirs
-    .filter(dir => dir !== "index.html")
-    .map(dir => {
-      return {
-        from: dir,
-        to: "",
-        context: path.resolve("public")
-      }
-    })
-  const basePlugins = [
-    new Dotenv(),
-    new HtmlWebpackPlugin({
-      template: "public/index.html"
-    }),
-    new CopyPlugin({
-      patterns: copyPluginPatterns
-    }),
-    new MiniCssExtractPlugin({
-      filename: isDev ? "[name].css" : "static/css/[name].[contenthash:6].css"
-    }),
-    new webpack.ProgressPlugin()
-  ]
-  let prodPlugins = [
-    ...basePlugins,
-    new CleanWebpackPlugin(),
-    new CompressionPlugin({
-      test: /\.(css|js|html|svg)$/
-    })
-  ]
-  if (isAnalyze) {
-    prodPlugins = [...prodPlugins, new BundleAnalyzerPlugin()]
-  }
-  return {
-    entry: "./src/index.tsx",
-    module: {
-      rules: [
-        {
-          test: /\.(ts|tsx)$/,
-          use: ["ts-loader", "eslint-loader"],
-          exclude: /node_modules/
-        },
-        {
-          test: /\.(s[ac]ss|css)$/,
-          use: [
-            MiniCssExtractPlugin.loader,
+    }
+    module.exports = async (env, agrv) => {
+    const isDev = agrv.mode === "development"
+    const isAnalyze = env && env.analyze
+    const dirs = await handleDir()
+    const copyPluginPatterns = dirs
+        .filter(dir => dir !== "index.html")
+        .map(dir => {
+        return {
+            from: dir,
+            to: "",
+            context: path.resolve("public")
+        }
+        })
+    const basePlugins = [
+        new Dotenv(),
+        new HtmlWebpackPlugin({
+        template: "public/index.html"
+        }),
+        new CopyPlugin({
+        patterns: copyPluginPatterns
+        }),
+        new MiniCssExtractPlugin({
+        filename: isDev ? "[name].css" : "static/css/[name].[contenthash:6].css"
+        }),
+        new webpack.ProgressPlugin()
+    ]
+    let prodPlugins = [
+        ...basePlugins,
+        new CleanWebpackPlugin(),
+        new CompressionPlugin({
+        test: /\.(css|js|html|svg)$/
+        })
+    ]
+    if (isAnalyze) {
+        prodPlugins = [...prodPlugins, new BundleAnalyzerPlugin()]
+    }
+    return {
+        entry: "./src/index.tsx",
+        module: {
+        rules: [
             {
-              loader: "css-loader",
-              options: { sourceMap: isDev ? true : false }
+            test: /\.(ts|tsx)$/,
+            use: ["ts-loader", "eslint-loader"],
+            exclude: /node_modules/
             },
             {
-              loader: "sass-loader",
-              options: { sourceMap: isDev ? true : false }
-            }
-          ]
-        },
-        {
-          test: /\.(eot|ttf|woff|woff2)$/,
-          use: [
+            test: /\.(s[ac]ss|css)$/,
+            use: [
+                MiniCssExtractPlugin.loader,
+                {
+                loader: "css-loader",
+                options: { sourceMap: isDev ? true : false }
+                },
+                {
+                loader: "sass-loader",
+                options: { sourceMap: isDev ? true : false }
+                }
+            ]
+            },
             {
-              loader: "file-loader",
-              options: {
-                name: isDev ? "[path][name].[ext]" : "static/fonts/[name].[ext]"
-              }
-            }
-          ]
-        },
-        {
-          test: /\.(png|svg|jpg|gif)$/,
-          use: [
+            test: /\.(eot|ttf|woff|woff2)$/,
+            use: [
+                {
+                loader: "file-loader",
+                options: {
+                    name: isDev ? "[path][name].[ext]" : "static/fonts/[name].[ext]"
+                }
+                }
+            ]
+            },
             {
-              loader: "file-loader",
-              options: {
-                name: isDev
-                  ? "[path][name].[ext]"
-                  : "static/media/[name].[contenthash:6].[ext]"
-              }
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [
+                {
+                loader: "file-loader",
+                options: {
+                    name: isDev
+                    ? "[path][name].[ext]"
+                    : "static/media/[name].[contenthash:6].[ext]"
+                }
+                }
+            ]
             }
-          ]
+        ]
+        },
+        resolve: {
+        extensions: [".tsx", ".ts", ".jsx", ".js"],
+        alias: {
+            "@": path.resolve("src"),
+            "@@": path.resolve()
         }
-      ]
-    },
-    resolve: {
-      extensions: [".tsx", ".ts", ".jsx", ".js"],
-      alias: {
-        "@": path.resolve("src"),
-        "@@": path.resolve()
-      }
-    },
-    output: {
-      path: path.resolve("build"),
-      publicPath: "/",
-      filename: "static/js/main.[contenthash:6].js",
-      environment: {
-        arrowFunction: false,
-        bigIntLiteral: false,
-        const: false,
-        destructuring: false,
-        dynamicImport: false,
-        forOf: false,
-        module: false
-      }
-    },
-    devtool: isDev ? "source-map" : false,
-    devServer: {
-      contentBase: "public",
-      port: 3000,
-      hot: true,
-      watchContentBase: true,
-      historyApiFallback: true,
-      open: true
-    },
-    plugins: isDev ? basePlugins : prodPlugins,
-    performance: {
-      maxEntrypointSize: 800000 //  Khi có 1 file build vượt quá giới hạn này (tính bằng byte) thì sẽ bị warning trên terminal.
+        },
+        output: {
+        path: path.resolve("build"),
+        publicPath: "/",
+        filename: "static/js/main.[contenthash:6].js",
+        environment: {
+            arrowFunction: false,
+            bigIntLiteral: false,
+            const: false,
+            destructuring: false,
+            dynamicImport: false,
+            forOf: false,
+            module: false
+        }
+        },
+        devtool: isDev ? "source-map" : false,
+        devServer: {
+        contentBase: "public",
+        port: 3000,
+        hot: true,
+        watchContentBase: true,
+        historyApiFallback: true,
+        open: true
+        },
+        plugins: isDev ? basePlugins : prodPlugins,
+        performance: {
+        maxEntrypointSize: 800000 //  Khi có 1 file build vượt quá giới hạn này (tính bằng byte) thì sẽ bị warning trên terminal.
+        }
     }
-  }
-}
-Giải thích:
+    }
+### Giải thích:
 
-isDev: Chúng ta có 2 mode là development và production tương đương với dev và build. 2 mode này được truyền vào thông qua –mode ở script trong package.json.
-isAnalyze: Nhìn vào file package.json chúng ta có câu lệnh build:analyze, mình có truyền biến analyze vào webpack thông qua –env. Biến này dùng để xác định bạn có dùng pluginBundleAnalyzerPlugin hay không.
-basePlugins: Những plugins dùng trong mode development.
-Trong CopyPlugin ta thực hiện copy các file từ public sang thư mục build
-CopyPlugin: Mình copy mọi file trong thư mục public vào thư mục build, ngoại trừ file index.html. Vì index.html đã có HtmlWebpackPlugin thực hiện việc copy và generate code, nếu không loại trừ sẽ bị xung đột!.
-webpack.ProgressPlugin() giúp chúng ta hiện % khi chạy webpack
-CompressionPlugin() giúp chúng ta nén file build thành gzip, thỉnh thoảng bạn sẽ thấy một số file kích thước nhỏ không được nén, bạn có thể xem cấu hình nén và điều kiện được nén tại đây
-prodPlugins: Những plugins dùng trong mode production.
-entry: File đầu vào cho webpack, file này thường là file import mọi file khác
-module.rules: Chứa các loader của webpack
-Các bạn để ý chỗ option.name ở file-loader: Đây là nơi bạn có thể thay đổi tên và đường dẫn file sau khi build. Môi trường dev thì mình giữ nguyên tên và đường dẫn (như vậy khi inspect trên trình duyệt sẽ dễ dàng thấy nguồn gốc file từ đâu ra), còn môi trường production thì mình sẽ chuyển vào thư mục static.
-contenthash:6 nghĩa là thêm 1 đoạn hash gồm 6 ký tự vào tên file.
-resolve.extensions: Thứ tự ưu tiên các file khi import
-alias: Tạo alias thuận tiện cho việc import trong webpack. Những nơi cần đường dẫn tuyệt đối thì ta phải dùng path.resolve() hoặc path.join()
-output.path: Đường dẫn thư mục build. Mình đặt tên thư mục build là build luôn, cho giống với Create React App
-output.filename: Tên file bundle sau khi được build. Cũng có thể quy định thư mục mà file build thuộc về
-output.publicPath: Chứa đường dẫn tương đối mà từ file index.html trỏ đến các file trong thư mục build sau khi build. Lưu ý là file index.html được build nằm trong thư mục tên là build. Ở các bài trước các bạn sẽ thấy mình để giá trị này là “”, nhưng bây giờ “/”.  Lý do khi deploy thì “” trình duyệt nó bảo lỗi không load file được, nên phải thêm “/” vào nhé.
-output.environment: Mặc định webpack generate ra code dùng 1 số cú pháp của ES6, nhưng target mình mong muốn là ES5 nên mình cần chỉnh một số thông số như sau.
-arrowFunction: Hỗ trợ arrow function.
-bigIntLiteral: Hỗ trợ BigInt
-const: Hỗ trợ khai báo const và let
-destructuring: Hỗ trợ destructuring
-dynamicImport: Hỗ trợ async import
-forOf: Hỗ trợ vòng lặp forOf cho các array
-module: Hỗ trợ moudle ES6 (import … from ‘…’)’
-output.devtool: tùy chọn sourcemap
-devServer.contentBase: Chứa đường dẫn tương đối đến file index.html
-devServer.port: port khi chạy localhost
-devServer.hot: Chế độ hot reload. Mặc định thì ở dev server thì webpack sẽ refresh lại trang mỗi khi có thay đổi nhỏ trong code.
-devServer.publicPath: Chứa đường dẫn tương đối từ thư mục root trỏ đến thư mục build (ở đây là dist). Chú ý phải thêm / ở trước và sau. Nhưng vì dùng HtmlWebpackPlugin nên ta sẽ tính từ chính thư mục dist. Vì thế giá trị cần dùng là /. Ở đây mình không dùng giá trị nào cả, vì mặc định nó đã là /
-devServer.watchContentBase: Nếu bạn có thay đổi gì trong file index.html thì trình duyệt cũng tự động reload.
-devServer.historyApiFallback: Phải set true nếu không khi bạn dùng lazyload module React thì sẽ gặp lỗi không load được file.
-plugins: Chứa các plugin Webpack.
-performance.maxEntrypointSize: Khi có 1 file build vượt quá giới hạn này (tính bằng byte) thì sẽ bị warning trên terminal.
-Lưu ý: anh em nhớ thêm folder @types để khai báo các file .d.ts phục vụ cho Typescript nhé, không Typescript báo lỗi khó chịu lắm đấy, chi tiết có thể coi Repository mình link bên dưới
+    isDev: Chúng ta có 2 mode là development và production tương đương với dev và build. 2 mode này được truyền vào thông qua –mode ở script trong package.json.
+    isAnalyze: Nhìn vào file package.json chúng ta có câu lệnh build:analyze, mình có truyền biến analyze vào webpack thông qua –env. Biến này dùng để xác định bạn có dùng pluginBundleAnalyzerPlugin hay không.
+    basePlugins: Những plugins dùng trong mode development.
+    Trong CopyPlugin ta thực hiện copy các file từ public sang thư mục build
+    CopyPlugin: Mình copy mọi file trong thư mục public vào thư mục build, ngoại trừ file index.html. Vì index.html đã có HtmlWebpackPlugin thực hiện việc copy và generate code, nếu không loại trừ sẽ bị xung đột!.
+    webpack.ProgressPlugin() giúp chúng ta hiện % khi chạy webpack
+    CompressionPlugin() giúp chúng ta nén file build thành gzip, thỉnh thoảng bạn sẽ thấy một số file kích thước nhỏ không được nén, bạn có thể xem cấu hình nén và điều kiện được nén tại đây
+    prodPlugins: Những plugins dùng trong mode production.
+    entry: File đầu vào cho webpack, file này thường là file import mọi file khác
+    module.rules: Chứa các loader của webpack
+    Các bạn để ý chỗ option.name ở file-loader: Đây là nơi bạn có thể thay đổi tên và đường dẫn file sau khi build. Môi trường dev thì mình giữ nguyên tên và đường dẫn (như vậy khi inspect trên trình duyệt sẽ dễ dàng thấy nguồn gốc file từ đâu ra), còn môi trường production thì mình sẽ chuyển vào thư mục static.
+    contenthash:6 nghĩa là thêm 1 đoạn hash gồm 6 ký tự vào tên file.
+    resolve.extensions: Thứ tự ưu tiên các file khi import
+    alias: Tạo alias thuận tiện cho việc import trong webpack. Những nơi cần đường dẫn tuyệt đối thì ta phải dùng path.resolve() hoặc path.join()
+    output.path: Đường dẫn thư mục build. Mình đặt tên thư mục build là build luôn, cho giống với Create React App
+    output.filename: Tên file bundle sau khi được build. Cũng có thể quy định thư mục mà file build thuộc về
+    output.publicPath: Chứa đường dẫn tương đối mà từ file index.html trỏ đến các file trong thư mục build sau khi build. Lưu ý là file index.html được build nằm trong thư mục tên là build. Ở các bài trước các bạn sẽ thấy mình để giá trị này là “”, nhưng bây giờ “/”.  Lý do khi deploy thì “” trình duyệt nó bảo lỗi không load file được, nên phải thêm “/” vào nhé.
+    output.environment: Mặc định webpack generate ra code dùng 1 số cú pháp của ES6, nhưng target mình mong muốn là ES5 nên mình cần chỉnh một số thông số như sau.
+    arrowFunction: Hỗ trợ arrow function.
+    bigIntLiteral: Hỗ trợ BigInt
+    const: Hỗ trợ khai báo const và let
+    destructuring: Hỗ trợ destructuring
+    dynamicImport: Hỗ trợ async import
+    forOf: Hỗ trợ vòng lặp forOf cho các array
+    module: Hỗ trợ moudle ES6 (import … from ‘…’)’
+    output.devtool: tùy chọn sourcemap
+    devServer.contentBase: Chứa đường dẫn tương đối đến file index.html
+    devServer.port: port khi chạy localhost
+    devServer.hot: Chế độ hot reload. Mặc định thì ở dev server thì webpack sẽ refresh lại trang mỗi khi có thay đổi nhỏ trong code.
+    devServer.publicPath: Chứa đường dẫn tương đối từ thư mục root trỏ đến thư mục build (ở đây là dist). Chú ý phải thêm / ở trước và sau. Nhưng vì dùng HtmlWebpackPlugin nên ta sẽ tính từ chính thư mục dist. Vì thế giá trị cần dùng là /. Ở đây mình không dùng giá trị nào cả, vì mặc định nó đã là /
+    devServer.watchContentBase: Nếu bạn có thay đổi gì trong file index.html thì trình duyệt cũng tự động reload.
+    devServer.historyApiFallback: Phải set true nếu không khi bạn dùng lazyload module React thì sẽ gặp lỗi không load được file.
+    plugins: Chứa các plugin Webpack.
+    performance.maxEntrypointSize: Khi có 1 file build vượt quá giới hạn này (tính bằng byte) thì sẽ bị warning trên terminal.
+#### Lưu ý: anh em nhớ thêm folder @types để khai báo các file .d.ts phục vụ cho Typescript nhé, không Typescript báo lỗi khó chịu lắm đấy, chi tiết có thể coi Repository mình link bên dưới
 
 Trên đây là giải thích cho một số cấu hình của webpack, còn lại mình nghĩ các bạn nhìn vào sẽ dễ dàng hiểu, nếu không hiểu đoạn nào thì có thể comment phía dưới, mình sẽ giải đáp sớm nhất. Hoặc coi lại Bài 1 và Bài 2 của mình
 
-Để chạy khi dev
+## Chạy khi dev
 
-yarn start
-Để build ra thành phẩm phục vụ deploy
+    yarn start
+## Để build ra thành phẩm phục vụ deploy
 
-yarn build
-Để build và phân tích source code
+    yarn build
+
+## Để build và phân tích source code
 
 yarn build:analyze
+
 Ngoài ra bạn có thể yarn lint, yarn lint:fix, yarn prettier, yarn prettier:fix như đã định nghĩa trong file package.json
