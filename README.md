@@ -28,6 +28,7 @@ Ngoài prettier, eslint-config-prettier và eslint-plugin-prettier thì còn l�
 
 ##### Thêm các file cấu hình
 .eslintrc
+
         {
             "extends": ["react-app", "prettier"],
             "plugins": ["react", "prettier"],
@@ -49,10 +50,12 @@ Ngoài prettier, eslint-config-prettier và eslint-plugin-prettier thì còn l�
         }
 
 .eslintignore
+
         /src/serviceWorker.ts
         /src/setupTests.ts
 
 .prettierrc
+
         {
         "arrowParens": "avoid",
         "semi": false,
@@ -64,11 +67,13 @@ Ngoài prettier, eslint-config-prettier và eslint-plugin-prettier thì còn l�
         }
 
 .prettierignore
+
         .cache
         package-lock.json
 
 # Thêm script vào package.json
 Chèn đoạn mã dưới đây vào mục scripts trong file ***package.json***
+
         "start": "webpack serve --mode development",
         "build": "webpack --mode production",
         "build:analyze": "webpack --mode production --env analyze",
@@ -79,6 +84,7 @@ Chèn đoạn mã dưới đây vào mục scripts trong file ***package.json***
 
 # Thêm file tsconfig.json để cấu hình Typescript
 tsconfig.json
+
         {
             "compilerOptions": {
                 "target": "ES5",
@@ -98,8 +104,10 @@ tsconfig.json
             },
             "include": ["src/**/*"]
         }
+        
 # Thêm public/index.html
 index.html
+
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -304,10 +312,16 @@ webpack.config.js
   -  ***performance.maxEntrypointSize***: Khi có 1 file build vượt quá giới hạn này (tính bằng byte) thì sẽ bị warning trên terminal.
 
 Để chạy khi dev
+
         yarn start
+
 Để build ra thành phẩm phục vụ deploy
+
         yarn build
+
 Để build và phân tích source code
+
         yarn build:analyze
+
 Ngoài ra bạn có thể yarn lint, yarn lint:fix, yarn prettier, yarn prettier:fix như đã định nghĩa trong file package.json
 
