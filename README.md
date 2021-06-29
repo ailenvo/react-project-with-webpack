@@ -1,6 +1,6 @@
 <h1 align="center">Webpack 5</h1>
 
-# Cài đặt Webpack và các loader
+## Cài đặt Webpack và các loader
 
     yarn add webpack webpack-cli webpack-dev-server style-loader css-loader sass sass-loader file-loader typescript ts-loader -D
 
@@ -15,7 +15,7 @@
 - **_typescript_**: Phần lõi của ngôn ngữ Typescript
 - **_ts-loader_**: Giúp tích hợp Typescript vào webpack
 
-# Cài đặt một số plugin bổ trợ webpack
+## Cài đặt một số plugin bổ trợ webpack
 
     yarn add clean-webpack-plugin compression-webpack-plugin copy-webpack-plugin dotenv-webpack html-webpack-plugin mini-css-extract-plugin webpack-bundle-analyzer -D
 
@@ -29,7 +29,7 @@
 - **_mini-css-extract-plugin_**: Bình thường thì css sẽ nằm trong file js sau khi build. Và khi chạy app thì js sẽ thêm các đoạn css đó vào thẻ <code><style></style></code>. Muốn css phải nằm ở file riêng biệt với js và khi chạy app thì js sẽ tự import bằng thẻ <code>link</code>. Đó là chức năng của plugin này
 - **_webpack-bundle-analyzer_**: Giúp phân tích bản build, coi thử thư viện nào đang chiếm bao nhiêu % bản build,…
 
-# Cài đặt ESLint và Prettier
+## Cài đặt ESLint và Prettier
 
     yarn add eslint babel-eslint eslint-config-react-app eslint-loader eslint-plugin-flowtype eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier eslint-plugin-prettier eslint-config-prettier -D
 
@@ -83,7 +83,7 @@ Ngoài prettier, eslint-config-prettier và eslint-plugin-prettier thì còn l�
         .cache
         package-lock.json
 
-# Thêm script vào package.json
+## Thêm script vào package.json
 
 Chèn đoạn mã dưới đây vào mục scripts trong file **_package.json_**
 
@@ -95,7 +95,7 @@ Chèn đoạn mã dưới đây vào mục scripts trong file **_package.json_**
         "prettier": "prettier --check \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
         "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
 
-# Thêm file tsconfig.json để cấu hình Typescript
+## Thêm file tsconfig.json để cấu hình Typescript
 
 tsconfig.json
 
@@ -119,7 +119,7 @@ tsconfig.json
             "include": ["src/**/*"]
         }
 
-# Thêm public/index.html
+## Thêm public/index.html
 
 index.html
 
@@ -144,7 +144,7 @@ index.html
             </body>
             </html>
 
-# Thêm file webpack.config.js
+## Thêm file webpack.config.js
 
 webpack.config.js
 
