@@ -1,32 +1,44 @@
+<h1 align="center">Webpack 5</h1>
+
 # Cài đặt Webpack và các loader
+
     yarn add webpack webpack-cli webpack-dev-server style-loader css-loader sass sass-loader file-loader typescript ts-loader -D
+
 ###### Giải thích
-  -  ***webpack*** là phần lõi của webpack
-  -  ***webpack-cli*** giúp ta gõ được lệnh của webpack trên terminal (gián tiếp thông qua file ***package.json***)
-  -  ***webpack-dev-server*** hỗ trợ tạo một server localhost cho môi trường dev
-  -  ***style-loader, css-loader*** giúp bạn có thể import được css vào file js
-  -  ***sass, sass-loader*** giúp bạn biên dịch scss sang css
-  -  ***file-loader*** giúp bạn import được các file ví dụ như ảnh, video vào file js
-  -  ***typescript***: Phần lõi của ngôn ngữ Typescript
-  -  ***ts-loader***: Giúp tích hợp Typescript vào webpack
+
+- **_webpack_** là phần lõi của webpack
+- **_webpack-cli_** giúp ta gõ được lệnh của webpack trên terminal (gián tiếp thông qua file **_package.json_**)
+- **_webpack-dev-server_** hỗ trợ tạo một server localhost cho môi trường dev
+- **_style-loader, css-loader_** giúp bạn có thể import được css vào file js
+- **_sass, sass-loader_** giúp bạn biên dịch scss sang css
+- **_file-loader_** giúp bạn import được các file ví dụ như ảnh, video vào file js
+- **_typescript_**: Phần lõi của ngôn ngữ Typescript
+- **_ts-loader_**: Giúp tích hợp Typescript vào webpack
 
 # Cài đặt một số plugin bổ trợ webpack
+
     yarn add clean-webpack-plugin compression-webpack-plugin copy-webpack-plugin dotenv-webpack html-webpack-plugin mini-css-extract-plugin webpack-bundle-analyzer -D
 
 ###### Giải thích
-   - ***clean-webpack-plugin***: Giúp dọn dẹp thư mục build trước khi build webpack. Ví dụ thư mục build của bạn đang chứa bản build trước, bây giờ bạn build lại thì plugin này sẽ xóa bản build trước.
-   - ***compression-webpack-plugin***: Giúp nén các file css, js, html… thành ***gzip***
-   - ***copy-webpack-plugin***: Giúp bạn copy các file ở thư mục dev vào thư mục build. Ví dụ bạn có các file như favicon.ico, robots.txt cùng cấp với index.html, bạn muốn khi build xong thì các file này cũng có mặt ở bản build. Nếu không có plugin này thì bạn phải copy thủ công.
-   - ***dotenv-webpack***: Giúp bạn dùng được các biến môi trường ở file ***.env*** và trong app của bạn
-   - ***html-webpack-plugin***: Giúp clone ra 1 file index.html từ file html ban đầu. Tại sao lại cần clone thì bạn có thể tham khảo bài Webpack
-   - ***mini-css-extract-plugin***: Bình thường thì css sẽ nằm trong file js sau khi build. Và khi chạy app thì js sẽ thêm các đoạn css đó vào thẻ <code><style></style></code>. Muốn css phải nằm ở file riêng biệt với js và khi chạy app thì js sẽ tự import bằng thẻ <code>link</code>. Đó là chức năng của plugin này
-   - ***webpack-bundle-analyzer***: Giúp phân tích bản build, coi thử thư viện nào đang chiếm bao nhiêu % bản build,…
+
+- **_clean-webpack-plugin_**: Giúp dọn dẹp thư mục build trước khi build webpack. Ví dụ thư mục build của bạn đang chứa bản build trước, bây giờ bạn build lại thì plugin này sẽ xóa bản build trước.
+- **_compression-webpack-plugin_**: Giúp nén các file css, js, html… thành **_gzip_**
+- **_copy-webpack-plugin_**: Giúp bạn copy các file ở thư mục dev vào thư mục build. Ví dụ bạn có các file như favicon.ico, robots.txt cùng cấp với index.html, bạn muốn khi build xong thì các file này cũng có mặt ở bản build. Nếu không có plugin này thì bạn phải copy thủ công.
+- **_dotenv-webpack_**: Giúp bạn dùng được các biến môi trường ở file **_.env_** và trong app của bạn
+- **_html-webpack-plugin_**: Giúp clone ra 1 file index.html từ file html ban đầu. Tại sao lại cần clone thì bạn có thể tham khảo bài Webpack
+- **_mini-css-extract-plugin_**: Bình thường thì css sẽ nằm trong file js sau khi build. Và khi chạy app thì js sẽ thêm các đoạn css đó vào thẻ <code><style></style></code>. Muốn css phải nằm ở file riêng biệt với js và khi chạy app thì js sẽ tự import bằng thẻ <code>link</code>. Đó là chức năng của plugin này
+- **_webpack-bundle-analyzer_**: Giúp phân tích bản build, coi thử thư viện nào đang chiếm bao nhiêu % bản build,…
+
 # Cài đặt ESLint và Prettier
+
     yarn add eslint babel-eslint eslint-config-react-app eslint-loader eslint-plugin-flowtype eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier eslint-plugin-prettier eslint-config-prettier -D
+
 ###### Giải thích
+
 Ngoài prettier, eslint-config-prettier và eslint-plugin-prettier thì còn lại đều là các plugin tiêu chuẩn tương tự như bộ cài Create React App.
 
 ##### Thêm các file cấu hình
+
 .eslintrc
 
         {
@@ -72,7 +84,8 @@ Ngoài prettier, eslint-config-prettier và eslint-plugin-prettier thì còn l�
         package-lock.json
 
 # Thêm script vào package.json
-Chèn đoạn mã dưới đây vào mục scripts trong file ***package.json***
+
+Chèn đoạn mã dưới đây vào mục scripts trong file **_package.json_**
 
         "start": "webpack serve --mode development",
         "build": "webpack --mode production",
@@ -83,6 +96,7 @@ Chèn đoạn mã dưới đây vào mục scripts trong file ***package.json***
         "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
 
 # Thêm file tsconfig.json để cấu hình Typescript
+
 tsconfig.json
 
         {
@@ -104,8 +118,9 @@ tsconfig.json
             },
             "include": ["src/**/*"]
         }
-        
+
 # Thêm public/index.html
+
 index.html
 
             <!DOCTYPE html>
@@ -130,6 +145,7 @@ index.html
             </html>
 
 # Thêm file webpack.config.js
+
 webpack.config.js
 
     const path = require("path")
@@ -275,41 +291,43 @@ webpack.config.js
         }
     }
     }
+
 ###### Giải thích:
-  -  ***isDev***: Chúng ta có 2 mode là ***development*** và ***production*** tương đương với ***dev*** và ***build***. 2 mode này được truyền vào thông qua <code>–mode</code> ở script trong ***package.json***.
-  -  ***isAnalyze***: Nhìn vào file ***package.json*** chúng ta có câu lệnh ***build:analyze***, có truyền biến analyze vào webpack thông qua ***–env***. Biến này dùng để xác định bạn có dùng ***pluginBundleAnalyzerPlugin*** hay không.
-  -  ***basePlugins***: Những plugins dùng trong mode development.
-    Trong ***CopyPlugin*** ta thực hiện copy các file từ ***public*** sang thư mục ***build***
-  -  ***CopyPlugin***: Copy mọi file trong thư mục ***public*** vào thư mục ***build***, ngoại trừ file ***index.html***. Vì ***index.html*** đã có ***HtmlWebpackPlugin*** thực hiện việc copy và generate code, nếu không loại trừ sẽ bị xung đột!.
-  -  ***webpack.ProgressPlugin()*** giúp hiện % khi chạy webpack
-    ***CompressionPlugin()*** giúp nén file build thành gzip, thỉnh thoảng bạn sẽ thấy một số file kích thước nhỏ không được nén, bạn có thể xem cấu hình nén và điều kiện được nén [tại đây](https://webpack.js.org/plugins/compression-webpack-plugin/)
-  -  ***prodPlugins***: Những plugins dùng trong mode production.
-  -  ***entry***: File đầu vào cho webpack, file này thường là file import mọi file khác
-  -  ***module.rules***: Chứa các loader của webpack
-    Chus ý chỗ <code>option.name</code> ở ***file-loader***: Đây là nơi có thể thay đổi tên và đường dẫn file sau khi build. Môi trường dev thì giữ nguyên tên và đường dẫn (như vậy khi inspect trên trình duyệt sẽ dễ dàng thấy nguồn gốc file từ đâu ra), còn môi trường production thì mình sẽ chuyển vào thư mục static.
-  -  ***contenthash:6*** nghĩa là thêm 1 đoạn hash gồm 6 ký tự vào tên file.
-  -  ***resolve.extensions***: Thứ tự ưu tiên các file khi import
-  -  ***alias***: Tạo alias thuận tiện cho việc import trong webpack. Những nơi cần đường dẫn tuyệt đối thì phải dùng <code>path.resolve() hoặc path.join()</code>
-  -  ***output.path***: Đường dẫn thư mục build.
-  -  ***output.filename***: Tên file bundle sau khi được build. Cũng có thể quy định thư mục mà file build thuộc về
-  -  ***output.publicPath***: Chứa đường dẫn tương đối mà từ file ***index.html*** trỏ đến các file trong thư mục build sau khi build. Lưu ý là file index.html được build nằm trong thư mục tên là build.
-  -  ***output.environment***: Mặc định webpack generate ra code dùng 1 số cú pháp của ES6, nhưng target mong muốn là ES5 nên cần chỉnh một số thông số như sau.
-  -  ***arrowFunction***: Hỗ trợ arrow function.
-  -  ***bigIntLiteral***: Hỗ trợ BigInt
-  -  ***const***: Hỗ trợ khai báo const và let
-  -  ***destructuring***: Hỗ trợ destructuring
-  -  ***dynamicImport***: Hỗ trợ async import
-  -  ***forOf***: Hỗ trợ vòng lặp forOf cho các array
-  -  ***module***: Hỗ trợ moudle ES6 (import … from ‘…’)’
-  -  ***output.devtool***: tùy chọn sourcemap
-  -  ***devServer.contentBase***: Chứa đường dẫn tương đối đến file index.html
-  -  ***devServer.port***: port khi chạy localhost
-  -  ***devServer.hot***: Chế độ hot reload. Mặc định thì ở dev server thì webpack sẽ refresh lại trang mỗi khi có thay đổi nhỏ trong code.
-  -  ***devServer.publicPath***: Chứa đường dẫn tương đối từ thư mục root trỏ đến thư mục build (ở đây là dist). Chú ý phải thêm <code>/</code> ở trước và sau. Nhưng vì dùng ***HtmlWebpackPlugin*** nên ta sẽ tính từ chính thư mục dist. Vì thế giá trị cần dùng là <code>/</code>. Ở đây mình không dùng giá trị nào cả, vì mặc định nó đã là <code>/</code>
-  -  ***devServer.watchContentBase***: Nếu bạn có thay đổi gì trong file index.html thì trình duyệt cũng tự động reload.
-  -  ***devServer.historyApiFallback***: Phải set true nếu không khi bạn dùng lazyload module React thì sẽ gặp lỗi không load được file.
-  -  ***plugins***: Chứa các plugin Webpack.
-  -  ***performance.maxEntrypointSize***: Khi có 1 file build vượt quá giới hạn này (tính bằng byte) thì sẽ bị warning trên terminal.
+
+- **_isDev_**: Chúng ta có 2 mode là **_development_** và **_production_** tương đương với **_dev_** và **_build_**. 2 mode này được truyền vào thông qua <code>–mode</code> ở script trong **_package.json_**.
+- **_isAnalyze_**: Nhìn vào file **_package.json_** chúng ta có câu lệnh **_build:analyze_**, có truyền biến analyze vào webpack thông qua **_–env_**. Biến này dùng để xác định bạn có dùng **_pluginBundleAnalyzerPlugin_** hay không.
+- **_basePlugins_**: Những plugins dùng trong mode development.
+  Trong **_CopyPlugin_** ta thực hiện copy các file từ **_public_** sang thư mục **_build_**
+- **_CopyPlugin_**: Copy mọi file trong thư mục **_public_** vào thư mục **_build_**, ngoại trừ file **_index.html_**. Vì **_index.html_** đã có **_HtmlWebpackPlugin_** thực hiện việc copy và generate code, nếu không loại trừ sẽ bị xung đột!.
+- **_webpack.ProgressPlugin()_** giúp hiện % khi chạy webpack
+  **_CompressionPlugin()_** giúp nén file build thành gzip, thỉnh thoảng bạn sẽ thấy một số file kích thước nhỏ không được nén, bạn có thể xem cấu hình nén và điều kiện được nén [tại đây](https://webpack.js.org/plugins/compression-webpack-plugin/)
+- **_prodPlugins_**: Những plugins dùng trong mode production.
+- **_entry_**: File đầu vào cho webpack, file này thường là file import mọi file khác
+- **_module.rules_**: Chứa các loader của webpack
+  Chus ý chỗ <code>option.name</code> ở **_file-loader_**: Đây là nơi có thể thay đổi tên và đường dẫn file sau khi build. Môi trường dev thì giữ nguyên tên và đường dẫn (như vậy khi inspect trên trình duyệt sẽ dễ dàng thấy nguồn gốc file từ đâu ra), còn môi trường production thì mình sẽ chuyển vào thư mục static.
+- **_contenthash:6_** nghĩa là thêm 1 đoạn hash gồm 6 ký tự vào tên file.
+- **_resolve.extensions_**: Thứ tự ưu tiên các file khi import
+- **_alias_**: Tạo alias thuận tiện cho việc import trong webpack. Những nơi cần đường dẫn tuyệt đối thì phải dùng <code>path.resolve() hoặc path.join()</code>
+- **_output.path_**: Đường dẫn thư mục build.
+- **_output.filename_**: Tên file bundle sau khi được build. Cũng có thể quy định thư mục mà file build thuộc về
+- **_output.publicPath_**: Chứa đường dẫn tương đối mà từ file **_index.html_** trỏ đến các file trong thư mục build sau khi build. Lưu ý là file index.html được build nằm trong thư mục tên là build.
+- **_output.environment_**: Mặc định webpack generate ra code dùng 1 số cú pháp của ES6, nhưng target mong muốn là ES5 nên cần chỉnh một số thông số như sau.
+- **_arrowFunction_**: Hỗ trợ arrow function.
+- **_bigIntLiteral_**: Hỗ trợ BigInt
+- **_const_**: Hỗ trợ khai báo const và let
+- **_destructuring_**: Hỗ trợ destructuring
+- **_dynamicImport_**: Hỗ trợ async import
+- **_forOf_**: Hỗ trợ vòng lặp forOf cho các array
+- **_module_**: Hỗ trợ moudle ES6 (import … from ‘…’)’
+- **_output.devtool_**: tùy chọn sourcemap
+- **_devServer.contentBase_**: Chứa đường dẫn tương đối đến file index.html
+- **_devServer.port_**: port khi chạy localhost
+- **_devServer.hot_**: Chế độ hot reload. Mặc định thì ở dev server thì webpack sẽ refresh lại trang mỗi khi có thay đổi nhỏ trong code.
+- **_devServer.publicPath_**: Chứa đường dẫn tương đối từ thư mục root trỏ đến thư mục build (ở đây là dist). Chú ý phải thêm <code>/</code> ở trước và sau. Nhưng vì dùng **_HtmlWebpackPlugin_** nên ta sẽ tính từ chính thư mục dist. Vì thế giá trị cần dùng là <code>/</code>. Ở đây mình không dùng giá trị nào cả, vì mặc định nó đã là <code>/</code>
+- **_devServer.watchContentBase_**: Nếu bạn có thay đổi gì trong file index.html thì trình duyệt cũng tự động reload.
+- **_devServer.historyApiFallback_**: Phải set true nếu không khi bạn dùng lazyload module React thì sẽ gặp lỗi không load được file.
+- **_plugins_**: Chứa các plugin Webpack.
+- **_performance.maxEntrypointSize_**: Khi có 1 file build vượt quá giới hạn này (tính bằng byte) thì sẽ bị warning trên terminal.
 
 Để chạy khi dev
 
@@ -324,4 +342,3 @@ webpack.config.js
         yarn build:analyze
 
 Ngoài ra bạn có thể yarn lint, yarn lint:fix, yarn prettier, yarn prettier:fix như đã định nghĩa trong file package.json
-
