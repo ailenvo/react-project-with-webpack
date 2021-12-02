@@ -35,7 +35,7 @@ module.exports = async (env, agrv) => {
     });
   const basePlugins = [
     new Dotenv({
-      path: "./.env.development",
+      path: "./.env.staging",
     }),
     new HtmlWebpackPlugin({
       template: "public/index.html",
@@ -133,7 +133,7 @@ module.exports = async (env, agrv) => {
     devtool: isDev ? "source-map" : false,
     devServer: {
       contentBase: "public",
-      port: 4000,
+      port: 3000,
       hot: true,
       watchContentBase: true,
       historyApiFallback: true,
