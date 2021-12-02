@@ -2,7 +2,7 @@
 
 ## Cài đặt Webpack và các loader
 
-    yarn add webpack webpack-cli webpack-dev-server style-loader css-loader sass sass-loader file-loader typescript ts-loader -D
+    yarn add webpack webpack-cli webpack-dev-server style-loader css-loader sass sass-loader file-loader typescript ts-loader eslint-loader -D
 
 ###### Giải thích
 
